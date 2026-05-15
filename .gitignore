@@ -1,0 +1,16 @@
+# Configuración sensible: ignoramos el archivo dentro de la carpeta core
+core/configuracion.php
+
+# Archivos de Composer
+vendor/
+composer.lock
+
+# Archivos del sistema y temporales
+.DS_Store
+Thumbs.db
+error_log
+*.log
+
+# Carpetas de configuración del editor (VS Code, etc.)
+.vscode/
+.idea/

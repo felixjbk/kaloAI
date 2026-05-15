@@ -1,0 +1,187 @@
+/**
+ * HOJA DE ESTILOS GENERALES (KaloAI)
+ * Definición de componentes visuales, efectos de profundidad, animaciones
+ * y utilidades de scroll para una interfaz coherente y profesional.
+ */
+
+/* ==========================================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ========================================================== */
+
+:root {
+    --color-primary: #14b8a6;
+    --color-primary-soft: rgba(20, 184, 166, 0.08);
+    --color-border: #e2e8f0;
+    --color-text-main: #111827;
+    --color-text-muted: #6b7280;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================
+   2. BARRAS DE DESPLAZAMIENTO (SCROLLBARS)
+   Unificamos el diseño para contenedores con la clase .custom-scrollbar
+   ========================================================== */
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px; /* Grosor optimizado para no invadir el diseño */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-border); /* Color neutro por defecto */
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+/* Resalto de la barra al interactuar o en secciones específicas */
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: var(--color-primary); 
+}
+
+/* ==========================================================
+   3. COMPONENTES Y TARJETAS
+   ========================================================== */
+
+/* Elevación suave para mejorar la jerarquía visual */
+.card-shadow {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Efecto de cristal esmerilado (Glassmorphism) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* Contenedor estándar para modales KaloAI */
+.modal-kalo-content {
+    background-color: #ffffff;
+    border-radius: 2.5rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================
+   4. BLOQUES DE ESTADÍSTICAS Y DATOS
+   ========================================================== */
+
+.stat-box {
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-value {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #0f766e; /* Un tono más oscuro de teal para lectura */
+    margin-top: 4px;
+}
+
+/* ==========================================================
+   5. FORMULARIOS E INPUTS
+   ========================================================== */
+
+.input-field {
+    -webkit-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+    font-size: 0.875rem;
+    background-color: #ffffff;
+    color: var(--color-text-main);
+    transition: all 0.15s ease;
+}
+
+.input-field::placeholder {
+    color: #9CA3AF;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px var(--color-primary-soft);
+}
+
+/* ==========================================================
+   6. ANIMACIONES
+   Definición de transiciones y efectos de entrada
+   ========================================================== */
+
+/* Fade In con desplazamiento vertical (Entrada suave de contenido) */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Pop In (Efecto para Modales y Alertas) */
+@keyframes pop-in {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-pop-in {
+    animation: pop-in 0.3s ease-out forwards;
+}
+
+/* Bounce In (Para elementos que requieren atención inmediata) */
+@keyframes bounce-in {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-bounce-in {
+    animation: bounce-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Pulse Slow (Respiración visual infinita) */
+.animate-pulse-slow {
+     animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
+}
+    
+@keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: .8; } 
+}
+
+/* ==========================================================
+   7. ELEMENTOS DE MARCA
+   ========================================================== */
+
+.logo {
+    height: 50px;
+    width: auto;
+    padding: 5px;
+    object-fit: contain;
+}

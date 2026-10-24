@@ -5,7 +5,7 @@
  * se calculan los totales diarios y se comparan con la meta del usuario.
  */
 $pageTitle = "KaloAI | Mi Plan Semanal";
-
+    
 session_start();
 require_once __DIR__ . '/../../core/configuracion.php';
 require_once __DIR__ . '/../../core/utilidades.php'; 

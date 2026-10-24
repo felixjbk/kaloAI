@@ -255,13 +255,17 @@ function redirigirPorRol($role_id) {
 
 
 /**
- * CONFIGURACIÓN ESTÁTICA PARA ENTORNO LOCAL
- * Forzamos la ruta para evitar errores de carpetas duplicadas en las vistas.
+ * CONFIGURACIÓN DINÁMICA DE LA URL BASE (Local + Hosting)
+ * En el hosting, la URL pública. En local (php -S localhost:8000 o XAMPP),
+ * la del propio servidor, sumando la carpeta si el proyecto no está en la raíz.
  */
-
-// Definimos la URL base apuntando a tu carpeta en htdocs
-// Asegúrate de que esta ruta coincida exactamente con tu carpeta en XAMPP
-define('BASE_URL', 'http://localhost/kaloai/');
-
-// Definimos la ruta física del sistema para los include/require internos
-define('ROOT_PATH', dirname(__DIR__) . '/');
+$kaloHost = $_SERVER['HTTP_HOST'] ?? '';
+if (preg_match('/^(localhost|127\.0\.0\.1)(:\d+)?$/', $kaloHost)) {
+    // Carpeta del proyecto respecto a la raíz del servidor ('' si está en la raíz)
+    $kaloRaiz = str_replace(DIRECTORY_SEPARATOR, '/', realpath($_SERVER['DOCUMENT_ROOT'] ?? '') ?: '');
+    $kaloProyecto = str_replace(DIRECTORY_SEPARATOR, '/', dirname(__DIR__));
+    $kaloCarpeta = trim(substr($kaloProyecto, strlen($kaloRaiz)), '/');
+    define('BASE_URL', 'http://' . $kaloHost . '/' . ($kaloCarpeta !== '' ? $kaloCarpeta . '/' : ''));
+} else {
+    define('BASE_URL', 'https://kaloai.infinityfreeapp.com/');
+}

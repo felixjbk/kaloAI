@@ -5,7 +5,7 @@
  * asignaciones de nutricionistas y visualización de logs de auditoría.
  */
 $pageTitle = "KaloAI | Panel Admin";
-
+    
 session_start();
 require_once __DIR__ . '/../../core/configuracion.php';
 require_once __DIR__ . '/../../core/utilidades.php';

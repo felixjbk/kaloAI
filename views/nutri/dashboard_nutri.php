@@ -4,7 +4,6 @@
  * Permite a los profesionales gestionar su cartera de clientes, visualizar 
  * estadísticas rápidas y acceder a la gestión individual de cada paciente.
  */
-
 $pageTitle = "KaloAI | Panel Nutricionista";
 
 session_start();
